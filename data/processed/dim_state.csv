@@ -7,32 +7,32 @@ state_key,state_name,vahan_name,region,population,has_maker_data
 6,Chandigarh,Chandigarh,North,1262000.0,False
 7,Chhattisgarh,Chhattisgarh,Central,31068000.0,False
 8,Dadra and Nagar Haveli and Daman and Diu,UT of DNH and DD,West,1503000.0,False
-9,Delhi,Delhi,North,22376000.0,False
+9,Delhi,Delhi,North,22376000.0,True
 10,Goa,Goa,West,1595000.0,False
-11,Gujarat,Gujarat,West,73728000.0,False
+11,Gujarat,Gujarat,West,73728000.0,True
 12,Haryana,Haryana,North,31148000.0,False
 13,Himachal Pradesh,Himachal Pradesh,North,7564000.0,False
 14,Jammu and Kashmir,Jammu and Kashmir,North,13855000.0,False
 15,Jharkhand,Jharkhand,East,40751000.0,False
-16,Karnataka,Karnataka,South,68785000.0,False
-17,Kerala,Kerala,South,36147000.0,False
+16,Karnataka,Karnataka,South,68785000.0,True
+17,Kerala,Kerala,South,36147000.0,True
 18,Ladakh,Ladakh,North,305000.0,False
 19,Lakshadweep,Lakshadweep,South,69000.0,False
 20,Madhya Pradesh,Madhya Pradesh,Central,89243000.0,False
-21,Maharashtra,Maharashtra,West,128902000.0,False
+21,Maharashtra,Maharashtra,West,128902000.0,True
 22,Manipur,Manipur,Northeast,3297000.0,False
 23,Meghalaya,Meghalaya,Northeast,3425000.0,False
 24,Mizoram,Mizoram,Northeast,1267000.0,False
 25,Nagaland,Nagaland,Northeast,2284000.0,False
-26,Odisha,Odisha,East,44624000.0,False
+26,Odisha,Odisha,East,44624000.0,True
 27,Puducherry,Puducherry,South,1742000.0,False
 28,Punjab,Punjab,North,31237000.0,False
-29,Rajasthan,Rajasthan,North,83278000.0,False
+29,Rajasthan,Rajasthan,North,83278000.0,True
 30,Sikkim,Sikkim,Northeast,705000.0,False
-31,Tamil Nadu,Tamil Nadu,South,77451000.0,False
-32,Telangana,Telangana,South,38545000.0,False
+31,Tamil Nadu,Tamil Nadu,South,77451000.0,True
+32,Telangana,Telangana,South,38545000.0,True
 33,Tripura,Tripura,Northeast,4241000.0,False
-34,Uttar Pradesh,Uttar Pradesh,Central,241863000.0,False
+34,Uttar Pradesh,Uttar Pradesh,Central,241863000.0,True
 35,Uttarakhand,Uttarakhand,Central,11943000.0,False
 36,West Bengal,West Bengal,East,100322000.0,False
 37,Rest of India,,Rest of India,,True

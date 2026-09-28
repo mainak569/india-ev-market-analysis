@@ -51,13 +51,24 @@
 - March spikes every year (Mar 2024 149,470; Mar 2025 138,472; Mar 2026 199,586)
 - <!-- so what (possible reasons: financial-year-end buying, subsidy deadlines - check before stating) -->
 
-**F6. State-level competition** (pending Report A for 10 states)
-- Leader and runner-up per state, HHI per state -> Q6 and Q7 once Report A is loaded
+**F6. No single national leader: state markets have different leaders** (FY2025-26, 10 largest states)
+- TVS leads 6 of 10 states (Rajasthan, UP, Tamil Nadu, Telangana, Odisha, Delhi); Bajaj leads Maharashtra (38.0%)
+  and Gujarat (27.7%); Ather leads Kerala (28.9%) and Karnataka (27.6%)
+- Most dominant leader: Bajaj in Maharashtra, 17.5 pp ahead of TVS; closest race: Telangana, TVS 24.9% vs Ather 23.0% (1.9 pp)
+- HHI: Maharashtra 2,245 (most concentrated), Kerala 1,940, Gujarat 1,884 ... Tamil Nadu 1,493 and Delhi 966 (competitive)
+- Delhi: 14 makers with 1%+ share, leader only 16.6% -> most fragmented market
+- <!-- so what -->
 
 ## 3. Recommendation: top states and entry approach
 
 - Scorecard (Q12): size 0.35, growth 0.25, headroom 0.15, competition 0.25; sensitivity across 4 weight sets
-- Top 5 states: <!-- fill in from Q12 once Report A is loaded -->
+- Candidates: the 10 states with maker-level data (82% of 2023 E2W volume)
+- Base ranking: 1 Delhi (0.600), 2 Tamil Nadu (0.598), 3 Karnataka (0.530), 4 Uttar Pradesh (0.464), 5 Maharashtra (0.423)
+- Most robust: Tamil Nadu ranks 2nd in all 4 weight scenarios (spread 0); Uttar Pradesh stays 3rd-5th (spread 2)
+- Sensitive: Delhi 1st in 3 scenarios but 5th when size is weighted 0.55 (small market, 41,245);
+  Maharashtra 3rd (size-led) to 9th (growth-led) - biggest market but +6.4% growth and HHI 2,245
+- Odisha rises to 3rd under growth-led weights (+42.0%)
+- Top 5 states: <!-- your pick and reasoning -->
 - Entry approach: <!-- your wording -->
 
 ## 4. Risks
@@ -77,5 +88,5 @@
 
 ## 6. Next steps
 
-- Load Report A for the 10 states and finish F6 and the scorecard
+- Extend maker-level data beyond the 10 largest states
 - <!-- your ideas: district-level (RTO) data, price segments, charging network data -->
