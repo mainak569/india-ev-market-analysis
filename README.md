@@ -6,7 +6,7 @@ Where should an electric two-wheeler brand expand in India? An end-to-end analys
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-4169E1?logo=postgresql&logoColor=white)
 ![pandas](https://img.shields.io/badge/pandas-3.0-150458?logo=pandas&logoColor=white)
 ![Power BI](https://img.shields.io/badge/Power%20BI-Desktop-F2C811?logo=powerbi&logoColor=black)
-![Tableau](https://img.shields.io/badge/Tableau-Public-E97627?logo=tableau&logoColor=white)
+[![Tableau](https://img.shields.io/badge/Tableau-Public-E97627?logo=tableau&logoColor=white)](https://public.tableau.com/app/profile/mainak.das6780/viz/IndiaEVAdoptionMarketShare/ExecutiveOverview)
 
 ## Business problem
 
@@ -112,6 +112,11 @@ scorecard with a weight-sensitivity test: see Q9 and Q12 in [`sql/03_analysis.sq
 
 ![State by month heatmap](images/06_state_month_heatmap.png)
 
+Tableau Public dashboards:
+
+![Tableau Executive Overview](images/tableau_overview.png)
+![Tableau Competitive Landscape](images/tableau_competition.png)
+
 ## Key insights
 
 - **Growth is accelerating.** E2W registrations rose from 1.00M (FY2023-24) to 1.47M (FY2025-26), about 21% a year.
@@ -161,6 +166,7 @@ Tamil Nadu is the most robust pick (2nd under every weighting). Maharashtra is t
 
 ## Links
 
+- Tableau Public: [India EV Adoption & Market Share](https://public.tableau.com/app/profile/mainak.das6780/viz/IndiaEVAdoptionMarketShare/ExecutiveOverview)
 - Power BI build guide: [`powerbi/POWERBI_GUIDE.md`](powerbi/POWERBI_GUIDE.md)
 - Tableau build guide: [`tableau/TABLEAU_GUIDE.md`](tableau/TABLEAU_GUIDE.md)
 
