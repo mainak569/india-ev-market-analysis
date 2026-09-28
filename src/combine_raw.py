@@ -19,6 +19,35 @@ REPORTS = {
     "A": ("e2w_maker_month_state.csv", "maker_raw"),
 }
 
+# Hand-checked names for the larger makers: (standard name, parent group).
+# Vahan lists legal entity names, which change with renames and spelling variants.
+MAKER_OVERRIDES = {
+    "TVS MOTOR COMPANY LTD": ("TVS Motor", "TVS Motor"),
+    "OLA ELECTRIC TECHNOLOGIES PVT LTD": ("Ola Electric", "Ola Electric"),
+    "BAJAJ AUTO LTD": ("Bajaj Auto", "Bajaj Auto"),
+    "CHETAK TECHNOLOGY LIMITED": ("Bajaj Auto", "Bajaj Auto"),
+    "ATHER ENERGY LTD": ("Ather Energy", "Ather Energy"),
+    "ATHER ENERGY PVT LTD": ("Ather Energy", "Ather Energy"),
+    "HERO MOTOCORP LTD": ("Hero MotoCorp (Vida)", "Hero MotoCorp"),
+    "GREAVES ELECTRIC MOBILITY LTD": ("Ampere (Greaves Electric)", "Greaves Cotton"),
+    "GREAVES ELECTRIC MOBILITY PVT LTD": ("Ampere (Greaves Electric)", "Greaves Cotton"),
+    "AMPERE VEHICLES PRIVATE LIMITED": ("Ampere (Greaves Electric)", "Greaves Cotton"),
+    "AMPERE VEHICLES PVT LTD": ("Ampere (Greaves Electric)", "Greaves Cotton"),
+    "HERO ELECTRIC VEHICLES PVT. LTD": ("Hero Electric", "Hero Electric"),
+    "HERO ELECTRIC VEHICLE PVT LTD": ("Hero Electric", "Hero Electric"),
+    "BGAUSS AUTO PRIVATE LIMITED": ("BGauss", "BGauss"),
+    "RIVER MOBILITY PVT LTD": ("River", "River"),
+    "OKINAWA AUTOTECH PVT LTD": ("Okinawa", "Okinawa"),
+    "REVOLT INTELLICORP PVT LTD": ("Revolt", "Revolt"),
+    "KINETIC GREEN ENERGY & POWER SOLUTIONS LTD": ("Kinetic Green", "Kinetic Green"),
+    "PUR ENERGY PVT LTD": ("PURE EV", "PURE EV"),
+    "HONDA MOTORCYCLE AND SCOOTER INDIA (P) LTD": ("Honda", "Honda"),
+    "SUZUKI MOTORCYCLE INDIA PVT LTD": ("Suzuki", "Suzuki"),
+    "OTHERS": ("Others (Vahan)", "Others (Vahan)"),
+}
+
+LEGAL_SUFFIX = re.compile(r"\(P\)|\b(PVT|PRIVATE|LTD|LIMITED|LLP|INC)\b\.?")
+
 FILE_NAME = re.compile(r"^(?P<report>[A-E])_[a-z0-9]+_[a-z]+_(?P<scope>[a-z_]+?_)?CY(?P<year>\d{4})\.xlsx$")
 
 
@@ -55,6 +84,8 @@ def read_report(path):
 
 def combine():
     INTERIM_DIR.mkdir(exist_ok=True)
+    for out_name, _ in REPORTS.values():
+        (INTERIM_DIR / out_name).unlink(missing_ok=True)
     states = pd.read_csv(REFERENCE_DIR / "state_region.csv")
     vahan_to_state = {v.upper(): s for s, v in zip(states["state"], states["vahan_name"])}
     slug_to_state = {s.lower().replace(" ", "_"): s for s in states["state"]}
@@ -90,6 +121,31 @@ def combine():
         df.to_csv(INTERIM_DIR / out_name, index=False)
         combined[letter] = df
     return combined
+
+
+def clean_maker_name(raw):
+    name = " ".join(LEGAL_SUFFIX.sub("", raw).split()).strip(" .,")
+    return name.title()
+
+
+def update_maker_mapping(combined):
+    """Add any makers not yet in maker_mapping.csv. Existing rows (and manual edits) are kept."""
+    path = REFERENCE_DIR / "maker_mapping.csv"
+    mapping = pd.read_csv(path) if path.exists() else pd.DataFrame(columns=["maker_raw", "maker_name", "parent_group"])
+    seen = set()
+    for letter in ("D", "A"):
+        if letter in combined:
+            seen |= set(combined[letter]["maker_raw"])
+    new = sorted(seen - set(mapping["maker_raw"]))
+    rows = []
+    for raw in new:
+        name, parent = MAKER_OVERRIDES.get(raw, (clean_maker_name(raw), None))
+        rows.append({"maker_raw": raw, "maker_name": name, "parent_group": parent or name})
+    if rows:
+        mapping = pd.concat([mapping, pd.DataFrame(rows)], ignore_index=True).sort_values("maker_raw")
+        mapping.to_csv(path, index=False)
+    print(f"\nmaker_mapping.csv: {len(mapping)} makers ({len(rows)} new), "
+          f"{mapping['maker_name'].nunique()} standard names")
 
 
 def check_filters(combined):
@@ -149,3 +205,4 @@ if __name__ == "__main__":
     combined = combine()
     profile(combined)
     check_filters(combined)
+    update_maker_mapping(combined)

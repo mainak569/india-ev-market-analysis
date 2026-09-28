@@ -51,7 +51,8 @@ A_e2w_maker_<state>_CY2024.xlsx
 
 | Files | Downloaded on |
 |-------|---------------|
-| B_2w_state_CY2023 | 2026-09-28 |
+| B, C, D for 2023-2026 | 2026-09-28 |
+| A (10 states, 2025-2026) | pending |
 
 ## Known limitations
 

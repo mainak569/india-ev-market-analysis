@@ -1,0 +1,3 @@
+fuel_key,fuel_group,is_electric,vahan_fuels
+1,Electric,True,"ELECTRIC(BOV), PURE EV"
+2,Non-electric,False,All other fuels
