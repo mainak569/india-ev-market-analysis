@@ -92,6 +92,45 @@ def combine():
     return combined
 
 
+def check_filters(combined):
+    """Cross-check reports against each other to catch files downloaded with the wrong filters."""
+    problems = []
+    b, c, d, a = (combined.get(k) for k in "BCDA")
+    if b is not None and c is not None:
+        b_year = b.groupby("year")["registrations"].sum()
+        c_year = c.groupby("year")["registrations"].sum()
+        for year in sorted(set(b_year.index) & set(c_year.index)):
+            # electric is a small slice of all two-wheelers; a ratio near 1 means C has no fuel filter
+            ratio = c_year[year] / b_year[year]
+            if ratio > 0.25:
+                problems.append(f"C {year}: E2W is {ratio:.0%} of all 2W -> C probably missing the fuel filter")
+        b_monthly = b.groupby("year").apply(lambda g: g["registrations"].sum() / g["month"].nunique())
+        for year in b_monthly.index[1:]:
+            change = b_monthly[year] / b_monthly[year - 1] - 1 if year - 1 in b_monthly.index else 0
+            if abs(change) > 0.3:
+                problems.append(f"B {year}: monthly average changed {change:+.0%} vs {year - 1} -> check the 2W filter")
+    if c is not None and d is not None:
+        c_year = c.groupby("year")["registrations"].sum()
+        d_year = d.groupby("year")["registrations"].sum()
+        for year in sorted(set(c_year.index) & set(d_year.index)):
+            if c_year[year] != d_year[year]:
+                problems.append(f"D {year}: total {d_year[year]:,} != C total {c_year[year]:,} -> D filters differ from C")
+    if c is not None and a is not None:
+        c_state = c.groupby(["state", "year"])["registrations"].sum()
+        a_state = a.groupby(["state", "year"])["registrations"].sum()
+        for (state, year), total in a_state.items():
+            expected = c_state.get((state, year))
+            if expected is not None and total != expected:
+                problems.append(f"A {state} {year}: total {total:,} != C {expected:,} -> A filters differ from C")
+
+    print("\nFilter checks:")
+    for p in problems:
+        print("  FAIL", p)
+    if not problems:
+        print("  all reports agree with each other")
+    return problems
+
+
 def profile(combined):
     for letter, df in combined.items():
         periods = df["year"].astype(str) + "-" + df["month"].astype(str).str.zfill(2)
@@ -107,4 +146,6 @@ def profile(combined):
 
 
 if __name__ == "__main__":
-    profile(combine())
+    combined = combine()
+    profile(combined)
+    check_filters(combined)
