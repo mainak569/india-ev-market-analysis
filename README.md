@@ -1,6 +1,6 @@
 # India EV Adoption & Market Share Analysis
 
-<!-- one-line summary -->
+Where should an electric two-wheeler brand expand in India? An end-to-end analysis of 3.6 years of Vahan registration data across all 36 states and UTs, from raw government exports to a PostgreSQL star schema, SQL analysis and dashboards.
 
 ![Python](https://img.shields.io/badge/Python-3.13-3776AB?logo=python&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-4169E1?logo=postgresql&logoColor=white)
@@ -10,8 +10,10 @@
 
 ## Business problem
 
-<!-- your wording: consultant for a two-wheeler EV brand planning to expand. How fast is adoption growing,
-in which states, who holds share where, and which states to prioritise next? -->
+Framed as a consulting engagement for a two-wheeler EV brand planning to expand. Leadership asked:
+
+> How fast is EV adoption growing, in which states, who holds market share where,
+> and which states should we prioritise next?
 
 ## Data sources
 
@@ -108,31 +110,59 @@ scorecard with a weight-sensitivity test: see Q9 and Q12 in [`sql/03_analysis.sq
 ![Maker share](images/04_maker_share.png)
 ![State size vs growth](images/05_state_2x2.png)
 
-<!-- add Power BI / Tableau screenshots and the walkthrough GIF -->
+![State by month heatmap](images/06_state_month_heatmap.png)
 
 ## Key insights
 
-<!-- your wording; supporting numbers are in reports/insights_summary.md -->
+- **Growth is accelerating.** E2W registrations rose from 1.00M (FY2023-24) to 1.47M (FY2025-26), about 21% a year.
+  April-August 2026 is up 72.8% on the same months of 2025, and monthly penetration passed 10% for the first time in June 2026.
+- **Adoption is uneven.** National penetration is 6.62% (FY2025-26), but Kerala, Goa and Karnataka are above 13%,
+  while Uttar Pradesh is at 3.90% and Bihar 2.37%. The South is 38% of all E2W volume.
+- **Leadership changed hands.** Ola's share peaked at 48.6% (Q1 FY2024-25) and fell to 11.5% for FY2025-26.
+  TVS (24.4%), Bajaj (20.4%), Ather (17.3%) and Hero Vida (10.2%) now hold about 72% of the market.
+- **Every state is a different market.** TVS leads 6 of the 10 largest states, Bajaj dominates Maharashtra (38%),
+  Ather leads Kerala and Karnataka. Delhi is the most fragmented market (HHI 966), Maharashtra the most concentrated (2,245).
+- **Festive season is a petrol story.** Sep-Nov lifts all two-wheeler registrations 45% above other months (FY2025-26), but E2W only 7%.
+
+Full findings: [`reports/insights_summary.md`](reports/insights_summary.md).
 
 ## Recommendations
 
-<!-- your wording -->
+Prioritise **Tamil Nadu, Karnataka and Delhi** first, then **Uttar Pradesh and Odisha**, based on a weighted scorecard
+of market size, growth, penetration headroom and competition (Q12), tested under four weightings:
+
+| Rank | State | E2W FY2025-26 | Growth | Penetration | HHI |
+|---|---|---|---|---|---|
+| 1 | Tamil Nadu | 158,628 | +33.5% | 8.82% | 1,493 |
+| 2 | Karnataka | 186,685 | +25.7% | 13.06% | 1,577 |
+| 3 | Delhi | 41,245 | +51.4% | 7.26% | 966 |
+| 4 | Uttar Pradesh | 123,844 | +20.4% | 3.90% | 1,843 |
+| 5 | Odisha | 79,511 | +42.0% | 10.50% | 1,804 |
+
+Tamil Nadu is the most robust pick (2nd under every weighting). Maharashtra is the largest market but is held back by
+6.4% growth and the most concentrated competition; its rank swings from 3rd to 9th with the weights.
 
 ## Challenges I faced
 
-<!-- your wording. Facts to draw on:
-- Vahan's Excel export failed intermittently (HTTP 503); the old dashboard is being replaced by a new portal with a CAPTCHA
-- Export titles don't record filters; 28 files were first downloaded without the 2W/EV filters and were caught by cross-report checks
-- "Financial Year" with Month Wise returned the same Jan-Dec table, so calendar years were downloaded and FY derived in code
-- Electric vehicles appear under two fuel labels (ELECTRIC(BOV) and PURE EV)
-- Maker names are legal entities with renames and spelling variants (e.g. Ampere Vehicles -> Greaves Electric Mobility)
-- The first FY in the data is partial, which broke FYTD YoY until partial FYs were excluded -->
+- **Unreliable source.** Vahan's Excel export failed intermittently (HTTP 503), and the old dashboard is being replaced
+  by a portal that needs a CAPTCHA for every report, so all files were downloaded manually.
+- **Exports don't record their filters.** 28 files were first downloaded without the two-wheeler and EV filters and looked
+  fine on the surface. Cross-report checks in `combine_raw.py` (E2W must be a small share of all 2W; maker totals must
+  equal state totals) caught every one.
+- **Financial years.** Vahan's "Financial Year" option returned the same Jan-Dec table for monthly reports, so I downloaded
+  calendar years and derived the FY from each month.
+- **Two labels for electric.** Vahan records EVs as both `ELECTRIC(BOV)` and `PURE EV`; counting one would undercount.
+- **Messy maker names.** Makers are listed by legal entity, with renames and spelling variants (Ampere Vehicles became
+  Greaves Electric Mobility). I built a mapping to standard names and parent groups.
+- **Mismatched grains.** Vahan only exports two-way tables, so the model uses two fact tables and a "Rest of India"
+  bucket instead of forcing everything into one.
+- **A partial first year.** The data starts in January, so the first FY has only three months; the FYTD comparison had
+  to exclude it to avoid a false +1,000% growth figure.
 
 ## Links
 
-- Tableau Public: <!-- link -->
-- NovyPro: <!-- link -->
-- Walkthrough video: <!-- link -->
+- Power BI build guide: [`powerbi/POWERBI_GUIDE.md`](powerbi/POWERBI_GUIDE.md)
+- Tableau build guide: [`tableau/TABLEAU_GUIDE.md`](tableau/TABLEAU_GUIDE.md)
 
 ## How to reproduce
 
@@ -177,4 +207,7 @@ reports/           insights summary
 
 ## What I'd do next
 
-<!-- your wording -->
+- Maker-level data for all states, and RTO (district) data inside the priority states
+- Price-segment and model-level analysis to see where a new brand would compete
+- Charging-station density and state subsidy policy as extra scorecard factors
+- A monthly refresh: new Vahan downloads re-run the whole pipeline in minutes
