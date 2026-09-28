@@ -7,3 +7,4 @@ __pycache__/
 
 # Excel lock files created while a workbook is open
 ~$*
+data/interim/
