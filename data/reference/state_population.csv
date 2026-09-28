@@ -1,37 +1,37 @@
-state,population,reference_year,source
-Andaman and Nicobar Islands,,2025,MoHFW Technical Group population projections 2011-2036
-Andhra Pradesh,,2025,MoHFW Technical Group population projections 2011-2036
-Arunachal Pradesh,,2025,MoHFW Technical Group population projections 2011-2036
-Assam,,2025,MoHFW Technical Group population projections 2011-2036
-Bihar,,2025,MoHFW Technical Group population projections 2011-2036
-Chandigarh,,2025,MoHFW Technical Group population projections 2011-2036
-Chhattisgarh,,2025,MoHFW Technical Group population projections 2011-2036
-Dadra and Nagar Haveli and Daman and Diu,,2025,MoHFW Technical Group population projections 2011-2036
-Delhi,,2025,MoHFW Technical Group population projections 2011-2036
-Goa,,2025,MoHFW Technical Group population projections 2011-2036
-Gujarat,,2025,MoHFW Technical Group population projections 2011-2036
-Haryana,,2025,MoHFW Technical Group population projections 2011-2036
-Himachal Pradesh,,2025,MoHFW Technical Group population projections 2011-2036
-Jammu and Kashmir,,2025,MoHFW Technical Group population projections 2011-2036
-Jharkhand,,2025,MoHFW Technical Group population projections 2011-2036
-Karnataka,,2025,MoHFW Technical Group population projections 2011-2036
-Kerala,,2025,MoHFW Technical Group population projections 2011-2036
-Ladakh,,2025,MoHFW Technical Group population projections 2011-2036
-Lakshadweep,,2025,MoHFW Technical Group population projections 2011-2036
-Madhya Pradesh,,2025,MoHFW Technical Group population projections 2011-2036
-Maharashtra,,2025,MoHFW Technical Group population projections 2011-2036
-Manipur,,2025,MoHFW Technical Group population projections 2011-2036
-Meghalaya,,2025,MoHFW Technical Group population projections 2011-2036
-Mizoram,,2025,MoHFW Technical Group population projections 2011-2036
-Nagaland,,2025,MoHFW Technical Group population projections 2011-2036
-Odisha,,2025,MoHFW Technical Group population projections 2011-2036
-Puducherry,,2025,MoHFW Technical Group population projections 2011-2036
-Punjab,,2025,MoHFW Technical Group population projections 2011-2036
-Rajasthan,,2025,MoHFW Technical Group population projections 2011-2036
-Sikkim,,2025,MoHFW Technical Group population projections 2011-2036
-Tamil Nadu,,2025,MoHFW Technical Group population projections 2011-2036
-Telangana,,2025,MoHFW Technical Group population projections 2011-2036
-Tripura,,2025,MoHFW Technical Group population projections 2011-2036
-Uttar Pradesh,,2025,MoHFW Technical Group population projections 2011-2036
-Uttarakhand,,2025,MoHFW Technical Group population projections 2011-2036
-West Bengal,,2025,MoHFW Technical Group population projections 2011-2036
+state,population,reference_date,source
+Andaman and Nicobar Islands,406000,2025-10-01,"NCP MoHFW Population Projections 2011-2036, Table 14"
+Andhra Pradesh,53632000,2025-10-01,"NCP MoHFW Population Projections 2011-2036, Table 14"
+Arunachal Pradesh,1597000,2025-10-01,"NCP MoHFW Population Projections 2011-2036, Table 14"
+Assam,36577000,2025-10-01,"NCP MoHFW Population Projections 2011-2036, Table 14"
+Bihar,131500000,2025-10-01,"NCP MoHFW Population Projections 2011-2036, Table 14"
+Chandigarh,1262000,2025-10-01,"NCP MoHFW Population Projections 2011-2036, Table 14"
+Chhattisgarh,31068000,2025-10-01,"NCP MoHFW Population Projections 2011-2036, Table 14"
+Dadra and Nagar Haveli and Daman and Diu,1503000,2025-10-01,"NCP MoHFW Population Projections 2011-2036, Table 14"
+Delhi,22376000,2025-10-01,"NCP MoHFW Population Projections 2011-2036, Table 14"
+Goa,1595000,2025-10-01,"NCP MoHFW Population Projections 2011-2036, Table 14"
+Gujarat,73728000,2025-10-01,"NCP MoHFW Population Projections 2011-2036, Table 14"
+Haryana,31148000,2025-10-01,"NCP MoHFW Population Projections 2011-2036, Table 14"
+Himachal Pradesh,7564000,2025-10-01,"NCP MoHFW Population Projections 2011-2036, Table 14"
+Jammu and Kashmir,13855000,2025-10-01,"NCP MoHFW Population Projections 2011-2036, Table 14"
+Jharkhand,40751000,2025-10-01,"NCP MoHFW Population Projections 2011-2036, Table 14"
+Karnataka,68785000,2025-10-01,"NCP MoHFW Population Projections 2011-2036, Table 14"
+Kerala,36147000,2025-10-01,"NCP MoHFW Population Projections 2011-2036, Table 14"
+Ladakh,305000,2025-10-01,"NCP MoHFW Population Projections 2011-2036, Table 14"
+Lakshadweep,69000,2025-10-01,"NCP MoHFW Population Projections 2011-2036, Table 14"
+Madhya Pradesh,89243000,2025-10-01,"NCP MoHFW Population Projections 2011-2036, Table 14"
+Maharashtra,128902000,2025-10-01,"NCP MoHFW Population Projections 2011-2036, Table 14"
+Manipur,3297000,2025-10-01,"NCP MoHFW Population Projections 2011-2036, Table 14"
+Meghalaya,3425000,2025-10-01,"NCP MoHFW Population Projections 2011-2036, Table 14"
+Mizoram,1267000,2025-10-01,"NCP MoHFW Population Projections 2011-2036, Table 14"
+Nagaland,2284000,2025-10-01,"NCP MoHFW Population Projections 2011-2036, Table 14"
+Odisha,44624000,2025-10-01,"NCP MoHFW Population Projections 2011-2036, Table 14"
+Puducherry,1742000,2025-10-01,"NCP MoHFW Population Projections 2011-2036, Table 14"
+Punjab,31237000,2025-10-01,"NCP MoHFW Population Projections 2011-2036, Table 14"
+Rajasthan,83278000,2025-10-01,"NCP MoHFW Population Projections 2011-2036, Table 14"
+Sikkim,705000,2025-10-01,"NCP MoHFW Population Projections 2011-2036, Table 14"
+Tamil Nadu,77451000,2025-10-01,"NCP MoHFW Population Projections 2011-2036, Table 14"
+Telangana,38545000,2025-10-01,"NCP MoHFW Population Projections 2011-2036, Table 14"
+Tripura,4241000,2025-10-01,"NCP MoHFW Population Projections 2011-2036, Table 14"
+Uttar Pradesh,241863000,2025-10-01,"NCP MoHFW Population Projections 2011-2036, Table 14"
+Uttarakhand,11943000,2025-10-01,"NCP MoHFW Population Projections 2011-2036, Table 14"
+West Bengal,100322000,2025-10-01,"NCP MoHFW Population Projections 2011-2036, Table 14"
