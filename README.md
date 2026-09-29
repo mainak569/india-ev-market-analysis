@@ -135,8 +135,6 @@ Tableau Public dashboards:
   Ather leads Kerala and Karnataka. Delhi is the most fragmented market (HHI 966), Maharashtra the most concentrated (2,245).
 - **Festive season is a petrol story.** Sep-Nov lifts all two-wheeler registrations 45% above other months (FY2025-26), but E2W only 7%.
 
-Full findings: [`reports/insights_summary.md`](reports/insights_summary.md).
-
 ## Recommendations
 
 Prioritise **Tamil Nadu, Karnataka and Delhi** first, then **Uttar Pradesh and Odisha**, based on a weighted scorecard
@@ -173,8 +171,6 @@ Tamil Nadu is the most robust pick (2nd under every weighting). Maharashtra is t
 ## Links
 
 - Tableau Public: [India EV Adoption & Market Share](https://public.tableau.com/app/profile/mainak.das6780/viz/IndiaEVAdoptionMarketShare/ExecutiveOverview)
-- Power BI build guide: [`powerbi/POWERBI_GUIDE.md`](powerbi/POWERBI_GUIDE.md)
-- Tableau build guide: [`tableau/TABLEAU_GUIDE.md`](tableau/TABLEAU_GUIDE.md)
 
 ## How to reproduce
 
@@ -199,8 +195,7 @@ python src/export_for_bi.py         # data/processed/*.csv for Power BI and Tabl
 jupyter lab notebooks/01_eda.ipynb
 ```
 
-Power BI and Tableau build steps: [`powerbi/POWERBI_GUIDE.md`](powerbi/POWERBI_GUIDE.md),
-[`tableau/TABLEAU_GUIDE.md`](tableau/TABLEAU_GUIDE.md).
+Power BI and Tableau both import the CSVs in `data/processed/` (`powerbi/theme.json` holds the Power BI colour theme).
 
 ## Project structure
 
