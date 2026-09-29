@@ -112,6 +112,12 @@ scorecard with a weight-sensitivity test: see Q9 and Q12 in [`sql/03_analysis.sq
 
 ![State by month heatmap](images/06_state_month_heatmap.png)
 
+Power BI report (built in the Power BI service on the same star schema, with DAX measures for E2W,
+penetration %, FYTD, market share and HHI):
+
+![Power BI Executive Overview](images/pbi_overview.png)
+![Power BI Competitive Landscape](images/pbi_competition.png)
+
 Tableau Public dashboards:
 
 ![Tableau Executive Overview](images/tableau_overview.png)
