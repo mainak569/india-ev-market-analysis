@@ -170,7 +170,10 @@ Tamil Nadu is the most robust pick (2nd under every weighting). Maharashtra is t
 
 ## Links
 
-- Tableau Public: [India EV Adoption & Market Share](https://public.tableau.com/app/profile/mainak.das6780/viz/IndiaEVAdoptionMarketShare/ExecutiveOverview)
+- Tableau Public:
+  - [Executive Overview](https://public.tableau.com/app/profile/mainak.das6780/viz/IndiaEVAdoptionMarketShare/ExecutiveOverview)
+  - [Competitive Landscape](https://public.tableau.com/app/profile/mainak.das6780/viz/IndiaEVAdoptionMarketShare/CompetitiveLandscape)
+- Power BI: report built in the Power BI service (private workspace); see the screenshots above.
 
 ## How to reproduce
 
