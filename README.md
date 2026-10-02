@@ -8,6 +8,10 @@ Where should an electric two-wheeler brand expand in India? An end-to-end analys
 ![Power BI](https://img.shields.io/badge/Power%20BI-Desktop-F2C811?logo=powerbi&logoColor=black)
 [![Tableau](https://img.shields.io/badge/Tableau-Public-E97627?logo=tableau&logoColor=white)](https://public.tableau.com/app/profile/mainak.das6780/viz/IndiaEVAdoptionMarketShare/ExecutiveOverview)
 
+## Demo video
+
+https://github.com/user-attachments/assets/c4ad9802-09d0-4e4e-894b-35b2d92d6f5d
+
 ## Business problem
 
 Framed as a consulting engagement for a two-wheeler EV brand planning to expand. Leadership asked:

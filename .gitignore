@@ -8,3 +8,6 @@ __pycache__/
 # Excel lock files created while a workbook is open
 ~$*
 data/interim/
+
+# Remotion source and renders of the demo video (the video is embedded in the README instead)
+video/
