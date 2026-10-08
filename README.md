@@ -79,7 +79,8 @@ so each fact keeps the grain its source reports actually have.
 4. **Validate** (`sql/02_validation.sql`): totals reconcile to the raw reports per state and month,
    maker totals match state totals, no orphan keys, negatives or duplicate grain rows. All 9 checks pass.
 5. **Analyse** (`sql/03_analysis.sql`): 12 business questions with CTEs and window functions.
-6. **Explore** (`notebooks/01_eda.ipynb`) and **visualise** in Power BI and Tableau from `data/processed/*.csv`.
+6. **Explore** (`notebooks/01_eda.ipynb`) and **visualise** in Power BI (the star-schema tables) and Tableau
+   (two flattened sheets built from the same tables).
 
 ## Highlight queries
 
@@ -135,25 +136,29 @@ Tableau Public dashboards:
   while Uttar Pradesh is at 3.90% and Bihar 2.37%. The South is 38% of all E2W volume.
 - **Leadership changed hands.** Ola's share peaked at 48.6% (Q1 FY2024-25) and fell to 11.5% for FY2025-26.
   TVS (24.4%), Bajaj (20.4%), Ather (17.3%) and Hero Vida (10.2%) now hold about 72% of the market.
-- **Every state is a different market.** TVS leads 6 of the 10 largest states, Bajaj dominates Maharashtra (38%),
+- **Every state is a different market.** TVS leads 6 of the 10 states with maker-level data, Bajaj dominates Maharashtra (38%),
   Ather leads Kerala and Karnataka. Delhi is the most fragmented market (HHI 966), Maharashtra the most concentrated (2,245).
 - **Festive season is a petrol story.** Sep-Nov lifts all two-wheeler registrations 45% above other months (FY2025-26), but E2W only 7%.
 
 ## Recommendations
 
-Prioritise **Tamil Nadu, Karnataka and Delhi** first, then **Uttar Pradesh and Odisha**, based on a weighted scorecard
-of market size, growth, penetration headroom and competition (Q12), tested under four weightings:
+Prioritise **Tamil Nadu, Delhi and Karnataka** first, then **Uttar Pradesh and Odisha**. The ranking comes from a weighted
+scorecard of market size, growth, penetration headroom and competition (Q12) for the 10 states with maker-level data,
+scored under four weightings (base, equal, growth-led, size-led). States are ordered by their average rank across the four:
 
-| Rank | State | E2W FY2025-26 | Growth | Penetration | HHI |
-|---|---|---|---|---|---|
-| 1 | Tamil Nadu | 158,628 | +33.5% | 8.82% | 1,493 |
-| 2 | Karnataka | 186,685 | +25.7% | 13.06% | 1,577 |
-| 3 | Delhi | 41,245 | +51.4% | 7.26% | 966 |
-| 4 | Uttar Pradesh | 123,844 | +20.4% | 3.90% | 1,843 |
-| 5 | Odisha | 79,511 | +42.0% | 10.50% | 1,804 |
+| Priority | State | E2W FY2025-26 | Growth | Penetration | HHI | Rank: base / equal / growth-led / size-led | Avg rank |
+|---|---|---|---|---|---|---|---|
+| 1 | Tamil Nadu | 158,628 | +33.5% | 8.82% | 1,493 | 2 / 2 / 2 / 2 | 2.0 |
+| 2 | Delhi | 41,245 | +51.4% | 7.26% | 966 | 1 / 1 / 1 / 5 | 2.0 |
+| 3 | Karnataka | 186,685 | +25.7% | 13.06% | 1,577 | 3 / 4 / 4 / 1 | 3.0 |
+| 4 | Uttar Pradesh | 123,844 | +20.4% | 3.90% | 1,843 | 4 / 3 / 5 / 4 | 4.0 |
+| 5 | Odisha | 79,511 | +42.0% | 10.50% | 1,804 | 6 / 5 / 3 / 6 | 5.0 |
+| 6 | Maharashtra | 225,506 | +6.4% | 9.18% | 2,245 | 5 / 7 / 9 / 3 | 6.0 |
 
-Tamil Nadu is the most robust pick (2nd under every weighting). Maharashtra is the largest market but is held back by
-6.4% growth and the most concentrated competition; its rank swings from 3rd to 9th with the weights.
+Tamil Nadu is the most robust pick: 2nd under every weighting, so it ranks ahead of Delhi on the tie. Delhi tops three of
+the four weightings as the fastest-growing and least concentrated market, but it is small (41k E2W), so it drops to 5th
+when size dominates. Karnataka is 1st when size leads. Maharashtra is the largest market but is held back by 6.4% growth
+and the most concentrated competition; its rank swings from 3rd to 9th with the weights, so Odisha ranks ahead of it.
 
 ## Challenges I faced
 
@@ -202,7 +207,9 @@ python src/export_for_bi.py         # data/processed/*.csv for Power BI and Tabl
 jupyter lab notebooks/01_eda.ipynb
 ```
 
-Power BI and Tableau both import the CSVs in `data/processed/` (`powerbi/theme.json` holds the Power BI colour theme).
+Power BI uses the star-schema tables (`data/processed/*.csv`, also bundled as sheets in `powerbi/india_ev_powerbi.xlsx`,
+with the colour theme in `powerbi/theme.json`). Tableau uses `tableau/india_ev_tableau.xlsx`: two flattened sheets
+(state x month, and maker x state x month) built from the same tables.
 
 ## Project structure
 
@@ -213,10 +220,9 @@ data/processed/    star-schema tables as CSV for Power BI / Tableau
 sql/               schema, validation and analysis queries
 notebooks/         exploratory analysis
 src/               combine, load, export and connection scripts
-powerbi/           build guide, theme, report and PDF export
-tableau/           build guide, link and screenshots
+powerbi/           Power BI data workbook and colour theme
+tableau/           Tableau data workbook
 images/            charts and dashboard screenshots
-reports/           insights summary
 ```
 
 ## What I'd do next
